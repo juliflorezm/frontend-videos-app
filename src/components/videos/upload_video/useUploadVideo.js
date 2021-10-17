@@ -7,6 +7,7 @@ export const useUploadVideo = ({ change }) => {
   const [labels, setLabels] = useState([]);
   const [message, setMessage] = useState("");
   const [input, setInput] = useState("Cargar video...");
+  const [tags, setTags] = useState([]);
 
   const init = {
     title: "",
@@ -14,6 +15,13 @@ export const useUploadVideo = ({ change }) => {
     label_id: "",
     video: null,
     author: "",
+  };
+
+  const handleDeleteTag = (tag) =>
+    setTags((tagss) => tagss.filter((t) => t !== tag));
+
+  const handleAddTag = (tag) => {
+    setTags((tagss) => [...tagss, "#" + tag.replace(/\s+/g, "")]);
   };
 
   const validate = (values) => {
@@ -29,6 +37,10 @@ export const useUploadVideo = ({ change }) => {
 
     if (!values.label_id) {
       errors.label_id = "La etiqueta del video es requerida";
+    }
+
+    if (labels.length === 0) {
+      errors.label_id = "Debe agregar etiquetas para subir sus videos.";
     }
 
     if (!values.video) {
@@ -51,6 +63,7 @@ export const useUploadVideo = ({ change }) => {
     formData.set("description", description);
     formData.set("label_id", label_id);
     formData.set("author", author);
+    tags.map((t) => formData.append("tags", t));
 
     try {
       const response = await postVideo(formData);
@@ -67,6 +80,7 @@ export const useUploadVideo = ({ change }) => {
         }
       }
       setInput("Cargar video...");
+      setTags([]);
       resetForm();
     } catch (err) {
       if (err["message"] === "Network Error") {
@@ -104,6 +118,7 @@ export const useUploadVideo = ({ change }) => {
   }, []);
 
   return {
+    tags,
     init,
     close,
     input,
@@ -113,5 +128,7 @@ export const useUploadVideo = ({ change }) => {
     validate,
     setInput,
     setMessage,
+    handleAddTag,
+    handleDeleteTag,
   };
 };

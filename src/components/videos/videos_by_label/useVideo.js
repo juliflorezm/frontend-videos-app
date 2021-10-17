@@ -36,6 +36,7 @@ const useVideo = ({ label, url }) => {
       findVideosByLabel({ label_id: label["_id"] })
         .then((data) => {
           if (data["variant"] && data["variant"] === "success") {
+            console.log(data["videos"]);
             setVideos(data["videos"]);
           } else if (data["variant"] && data["variant"] === "error") {
             console.log(data["message"]);

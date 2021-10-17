@@ -34,6 +34,14 @@ export const Item = ({ vid, handleClickCard, url }) => {
               <Typography
                 style={{
                   color: "rgb(192, 200, 248)",
+                  fontSize: 12,
+                }}
+              >
+                {vid["tags"].map((t) => " " + t)}
+              </Typography>
+              <Typography
+                style={{
+                  color: "rgb(192, 200, 248)",
                   fontSize: 14,
                   fontWeight: "bold",
                 }}

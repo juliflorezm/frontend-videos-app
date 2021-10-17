@@ -60,6 +60,14 @@ export const VideoDisplayed = (props) => {
             <Typography
               style={{
                 color: "rgb(192, 200, 248)",
+                fontSize: 16,
+              }}
+            >
+              {videoSelected["tags"].map((t) => " " + t)}
+            </Typography>
+            <Typography
+              style={{
+                color: "rgb(192, 200, 248)",
                 fontSize: 18,
                 fontWeight: "bold",
               }}

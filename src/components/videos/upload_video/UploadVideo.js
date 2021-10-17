@@ -9,6 +9,7 @@ import {
   MenuItem,
   TextField,
 } from "@mui/material";
+import ChipInput from "material-ui-chip-input";
 import { Formik } from "formik";
 import { Col, Row } from "react-flexbox-grid";
 import { useUploadVideo } from "./useUploadVideo";
@@ -17,8 +18,19 @@ import { useStyles } from "./styles.js";
 export const UploadVideo = (props) => {
   const classes = useStyles();
   const { open, change } = props;
-  const { init, close, input, labels, submit, message, setInput, validate } =
-    useUploadVideo({ change });
+  const {
+    tags,
+    init,
+    close,
+    input,
+    labels,
+    submit,
+    message,
+    setInput,
+    validate,
+    handleAddTag,
+    handleDeleteTag,
+  } = useUploadVideo({ change });
 
   return (
     <>
@@ -162,6 +174,28 @@ export const UploadVideo = (props) => {
                   <Col xs={6}>
                     <FormControl
                       style={{
+                        minWidth: 180,
+                        maxWidth: 280,
+                      }}
+                    >
+                      <ChipInput
+                        id="tags"
+                        name="tags"
+                        variant="outlined"
+                        value={tags}
+                        label="Tags"
+                        placeholder="Enter para agregar"
+                        onChange={handleChange}
+                        onAdd={(tag) => handleAddTag(tag)}
+                        onDelete={(tag) => handleDeleteTag(tag)}
+                      />
+                    </FormControl>
+                  </Col>
+                </Row>
+                <Row className={classes.margin}>
+                  <Col xs={12} className={classes.center}>
+                    <FormControl
+                      style={{
                         minWidth: 240,
                         maxWidth: 340,
                       }}
@@ -196,21 +230,6 @@ export const UploadVideo = (props) => {
                           <span>{errors.video}</span>
                         )}
                       </FormHelperText>
-                      {/* <TextField
-                        error={errors.email && touched.email ? true : false}
-                        id="email"
-                        type="email"
-                        label="Correo Electrónico"
-                        size="small"
-                        //className={classes.field}
-                        value={values.email}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        helperText={
-                          errors.email &&
-                          touched.email && <span>{errors.email}</span>
-                        }
-                      /> */}
                     </FormControl>
                   </Col>
                 </Row>

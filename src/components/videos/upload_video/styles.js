@@ -43,4 +43,7 @@ export const useStyles = makeStyles((theme) => ({
   fondo: {
     backgroundColor: "#282c34",
   },
+  chip: {
+    color: "black",
+  },
 }));
