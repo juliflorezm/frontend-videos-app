@@ -1,4 +1,4 @@
-# how to run application (dev mode)
+# How to run application (dev mode)
 
 1. make sure server is running
 2. npm i
@@ -15,4 +15,4 @@ The tecnology used was React js, his main "architecture" is based on
 
 # Note
 
-if you want see listed all videos, you must add a label named General which was configured to show all videos you have added.
+If you want see listed all videos, you must add a label named General which was configured to show all videos you have added.
