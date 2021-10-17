@@ -6,7 +6,7 @@
 
 # Tecnology used
 
-The tecnology used was React js, his main "arquitecture" is based on
+The tecnology used was React js, his main "architecture" is based on
 
 1. data_modules folder for consuming apis
 2. data folder that is into components folder to solve promisses
