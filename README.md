@@ -1,10 +1,10 @@
 # how to run application (dev mode)
 
 1. make sure server is running
-2. mpm i
+2. npm i
 3. npm start
 
-# tecnology used
+# Tecnology used
 
 The tecnology used was React js, his main "arquitecture" is based on
 
